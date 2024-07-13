@@ -1,23 +1,19 @@
-import { useState } from "react";
+import { useRef } from "react";
 import { IoMdAddCircleOutline } from "react-icons/io";
 
 function AppTodo({ onNewItem }) {
-  const [toDoName, setToDoName] = useState("");
-  const [toDoDate, setToDoDate] = useState("");
-
-  const handleNameChange = (event) => {
-    setToDoName(event.target.value);
-  };
-
-  const handleDateChange = (event) => {
-    setToDoDate(event.target.value);
-  };
+  // const [toDoName, setToDoName] = useState("");
+  // const [toDoDate, setToDoDate] = useState("");
+  const toDoNameElement = useRef();
+  const dueDateElement = useRef();
 
   const handleAddButtonClicked = (event) => {
     event.preventDefault();
+    const toDoName = toDoNameElement.current.value;
+    const toDoDate = dueDateElement.current.value;
+    toDoNameElement.current.value = "";
+    dueDateElement.current.value = "";
     onNewItem(toDoName, toDoDate);
-    setToDoName("");
-    setToDoDate("");
   };
 
   return (
@@ -28,13 +24,12 @@ function AppTodo({ onNewItem }) {
             <div className="col-4">
               <input
                 type="text"
+                ref={toDoNameElement}
                 placeholder="Enter Your Todo"
-                value={toDoName}
-                onChange={handleNameChange}
               />
             </div>
             <div className="col-4">
-              <input type="date" value={toDoDate} onChange={handleDateChange} />
+              <input type="date" ref={dueDateElement} />
             </div>
             <div className="col-2">
               <button type="submit" className="btn btn-success button1">
