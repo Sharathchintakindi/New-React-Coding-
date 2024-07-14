@@ -2,8 +2,6 @@ import { useRef } from "react";
 import { IoMdAddCircleOutline } from "react-icons/io";
 
 function AppTodo({ onNewItem }) {
-  // const [toDoName, setToDoName] = useState("");
-  // const [toDoDate, setToDoDate] = useState("");
   const toDoNameElement = useRef();
   const dueDateElement = useRef();
 
