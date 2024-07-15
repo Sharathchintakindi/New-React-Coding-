@@ -10,3 +10,7 @@ Topics covered are:
   Props
   Handling events
   Passing children
+  Forms
+  UseRef
+  Managing State
+  Context API
